@@ -77,4 +77,11 @@ resource "aws_security_group" "asg" {
     lifecycle {
         create_before_destroy = true
     }
+
+    tags = merge(
+        local.common_tags,
+        {
+            Name = format("%s_sg_", local.prefix_name)
+        }
+    )
 }
