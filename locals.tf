@@ -60,4 +60,21 @@ locals {
         port     = "80"
         protocol = "HTTP"
     }
+
+    scale_number = {
+        dev = {min_size = 1, max_size = 3, desired_capacity = 1 }
+        prd = {min_size = 1, max_size = 10, desired_capacity = 1 }
+    }
+
+    instance_type = {
+        dev = "t3.micro"
+        prd = "t3.medium"
+    }
+
+    common_tags {
+        service    = var.service
+        owner      = var.owner
+        product    = var.product
+        enviroment = var.enviroment
+    }
 }    
